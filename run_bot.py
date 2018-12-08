@@ -29,3 +29,6 @@ while True:
             update[0][6]))
 
     ts = long_poll['ts']
+
+#коммент для проверки git
+value = 'переменная для проверки git'
