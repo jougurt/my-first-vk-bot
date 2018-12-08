@@ -8,6 +8,7 @@ from сonfig import *
 
 def write_msg(user_id, text):
     vk_bot.method('messages.send', {'user_id': user_id, 'message': text, 'random_id': random.randint(0, 1000)})
+#commit
 
 
 vk_bot = vk_api.VkApi(token=TOKEN)
