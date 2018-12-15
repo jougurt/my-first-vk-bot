@@ -5,16 +5,6 @@ import vk_api
 
 from сonfig import *
 
-def write_msg_attach(user_id, text, att_url):
-    vk_bot.method('messages.send',
-                  {'user_id': user_id,
-                   'attachment': att_url,
-                   'message': text,
-                   'random_id': random.randint(0, 1000)})
-    if 'картинк' in update[0][6]:
-        write_msg_attach(user_id,
-                         'вот тебе огненная картинка',
-                         'photo-171720905_456239025')
 
 def write_msg(user_id, text):
     vk_bot.method('messages.send', {'user_id': user_id, 'message': text, 'random_id': random.randint(0, 1000)})
@@ -39,6 +29,3 @@ while True:
             update[0][6]))
 
     ts = long_poll['ts']
-
-#коммент для проверки git
-value = 'переменная для проверки git'
