@@ -3,12 +3,12 @@ import random
 import requests
 import vk_api
 
-from сonfig import *
+from сonfig_ import *
 
 
-def write_msg(user_id, text):
-    vk_bot.method('messages.send', {'user_id': user_id, 'message': text, 'random_id': random.randint(0, 1000)})
-#commit
+def write_msg_attach(user_id, text, att_url):
+    vk_bot.method('messages.send',
+                  {'user_id': user_id, 'attachment': att_url, 'message': text, 'random_id': random.randint(0, 1000)})
 
 
 vk_bot = vk_api.VkApi(token=TOKEN)
@@ -21,11 +21,8 @@ while True:
         'https://{server}?act={act}&key={key}&ts={ts}&wait=500'.format(server=server, act='a_check', key=key,
                                                                        ts=ts)).json()
     update = long_poll['updates']
-    if update[0][0] == 4:
+    if 'картинк' in update[0][6]:
         user_id = update[0][3]
-        user_name = vk_bot.method('users.get', {'user_ids': user_id})
-        write_msg(user_id, 'Привет, ' + (user_name[0]['first_name']))
-        print(str(user_name[0]['first_name']) + ' ' + str(user_name[0]['last_name']) + 'написал(а) боту - ' + str(
-            update[0][6]))
+        write_msg_attach(user_id, 'ndjz rfhnbyrf', '1.jpg')
 
     ts = long_poll['ts']
